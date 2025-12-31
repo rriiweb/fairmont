@@ -1,0 +1,866 @@
+@charset "utf-8";
+
+@font-face {
+  font-family: "Pretendard";
+  src: url("../font/PretendardVariable.ttf");
+}
+
+@font-face {
+  font-family: "Cinema";
+  src: url("../font/CinemaSundayDemoFont.otf");
+}
+
+@font-face {
+  font-family: "Montserrat";
+  src: url("../font/MontserratVariable.ttf");
+}
+
+html {
+  font-size: 10px;
+  font-family: "Pretendard";
+  overflow-x: hidden;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* common */
+.section-title {
+  font-family: "Cinema";
+  font-size: 6rem;
+  text-transform: uppercase;
+}
+
+/* header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 10rem;
+  z-index: 99;
+  background: linear-gradient(to bottom,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0) 90%);
+  transition: all 0.5s;
+}
+
+header.on {
+  background: none;
+  background-color: #fff;
+}
+
+header.hide {
+  display: none;
+}
+
+header .header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 1420px;
+  height: 100%;
+  margin: 0 auto;
+}
+
+header h1 a {
+  display: block;
+  width: 110px;
+  height: 40px;
+  background: url("../img/logo-w.svg") no-repeat center/auto 100%;
+}
+
+header.on h1 a {
+  background-image: url("../img/logo-g.svg");
+}
+
+header nav .depth1 {
+  display: flex;
+  gap: 5rem;
+}
+
+header nav .depth1 > li > a {
+  display: block;
+  line-height: 10rem;
+  font-family: "Montserrat";
+  font-size: 1.8rem;
+  color: #fff;
+  font-weight: 500;
+}
+
+header.on nav .depth1 > li > a {
+  color: #333;
+}
+
+header.on nav .depth1 > li > a:hover {
+  color: #cd2f34;
+}
+
+header nav .depth2 {
+  position: absolute;
+  top: 10rem;
+  left: 0;
+  width: 100%;
+  height: 6rem;
+  background-color: rgba(0, 0, 0, 0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.5s;
+}
+
+header nav .depth1 li:hover .depth2 {
+  opacity: 1;
+  visibility: visible;
+}
+
+header nav .depth2 > li {
+  display: flex;
+  align-items: center;
+}
+
+header nav .depth2 > li > a {
+  font-size: 1.6rem;
+  color: #eee;
+}
+
+header nav .depth2 > li > a:hover {
+  font-weight: 500;
+  color: #fff;
+}
+
+header nav .depth2 > li::after {
+  content: "";
+  display: block;
+  width: 2px;
+  height: 2px;
+  background-color: #fff;
+  margin: 0 2rem;
+}
+
+header nav .depth2 > li:last-child::after {
+  display: none;
+}
+
+header .hamburger {
+  width: 36px;
+  height: 24px;
+  display: none;
+}
+
+header .hamburger span {
+  width: 100%;
+  height: 2px;
+  background-color: #fff;
+}
+
+header.on .hamburger span {
+  background-color: #333;
+}
+
+/* main */
+/* hero */
+section.hero {
+  width: 100%;
+  height: 800px;
+  position: relative;
+}
+
+.hero .hero-swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.hero .hero-swiper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero form.reservation {
+  position: absolute;
+  z-index: 9;
+  left: 50%;
+  bottom: 90px;
+  transform: translateX(-50%);
+  width: 960px;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  color: #333;
+
+  display: grid;
+  grid-template-columns: 280px 280px 280px 100px;
+  align-items: center;
+}
+
+.hero .reservation > .rsv-input {
+  border-right: 1px solid #333;
+}
+
+.hero .reservation .rsv-count {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.hero .reservation .rsv-count > * {
+  width: 60px;
+}
+
+.hero .reservation label {
+  font-size: 1.2rem;
+  display: block;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.hero .reservation input,
+.hero .reservation select,
+.hero .reservation option,
+.hero .reservation span {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  font-size: 1.6rem;
+  font-weight: 600;
+  font-family: "Pretendard";
+}
+
+.hero .reservation .rsv-select {
+  position: relative;
+}
+
+.hero .reservation select {
+  width: 100%;
+  line-height: 19px;
+  text-align: center;
+  appearance: none;
+  background: none;
+  border: none;
+  outline: none;
+}
+
+.hero .reservation .rsv-select::after {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 99;
+  bottom: 8px;
+  right: 10px;
+  transform: rotate(45deg);
+  width: 3px;
+  height: 3px;
+  pointer-events: none;
+  border-right: 1px solid #888;
+  border-bottom: 1px solid #888;
+}
+
+.hero .reservation input[type="date"] {
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
+}
+
+.hero .reservation input[type="submit"] {
+  font-size: 1.2rem;
+  color: #fff;
+  font-weight: 400;
+  width: 100px;
+  height: 100%;
+  background-color: #810000;
+  border: none;
+  cursor: pointer;
+}
+
+.hero .reservation .rsv-count {
+  display: flex;
+}
+
+/* offer */
+section.offer {
+  width: 100%;
+  padding: 12rem 0;
+  background-color: #111;
+}
+
+.offer .offer-inner {
+  width: 1420px;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+}
+
+.offer .offer-head {
+  display: flex;
+  height: auto;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.offer .offer-head .section-title {
+  color: #fff;
+}
+
+.offer .offer-head a {
+  display: inline-block;
+  padding: 10px 50px;
+  color: #fff;
+  background-color: #810000;
+  cursor: pointer;
+  margin-top: 60px;
+  font-size: 1.4rem;
+}
+
+.offer .offer-head .offer-swiper-buttons {
+  display: flex;
+  gap: 40px;
+}
+
+.offer .offer-head .offer-swiper-buttons > * {
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.offer .offer-head .offer-swiper-prev {
+  background: url("../img/offer-arrow.svg") no-repeat center/cover;
+}
+
+.offer .offer-head .offer-swiper-next {
+  background: url("../img/offer-arrow.svg") no-repeat center/cover;
+  transform: rotate(180deg);
+}
+
+.offer .offer-body .offer-swiper {
+  width: 1000px;
+  overflow: hidden;
+}
+
+.offer .offer-body .offer-swiper .swiper-slide {
+  width: 300px !important;
+}
+
+.offer .offer-body .swiper-slide img {
+  width: 300px;
+  height: 350px;
+  object-fit: cover;
+  object-position: center;
+}
+
+.offer .offer-body .swiper-slide h3 {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #97824b;
+  margin-top: 30px;
+}
+
+.offer .offer-body .swiper-slide > p {
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: #aaa;
+  margin-top: 16px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.offer .offer-body .swiper-slide span {
+  display: block;
+  border: 1px solid #97824b;
+  margin: 20px 0;
+}
+
+.offer .offer-body .swiper-slide > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.offer .offer-body .swiper-slide .date {
+  font-size: 1.4rem;
+  color: #aaa;
+  letter-spacing: -0.03em;
+}
+
+.offer .offer-body .swiper-slide a {
+  font-size: 1.2rem;
+  display: inline-block;
+  padding: 5px 20px;
+  color: #fff;
+  background-color: #97824b;
+}
+
+/* dining */
+section.dining {
+  width: 100%;
+  padding: 20rem 0;
+  position: relative;
+  background-color: rgba(17, 17, 17, 0.7);
+  background-image: url("../img/dining-bg.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-blend-mode: darken;
+  transition: all 0.5s;
+}
+
+section.dining.bg1 {
+  background-image: url("../img/dining1-spectrum.jpg");
+}
+
+section.dining.bg2 {
+  background-image: url("../img/dining2-mariposa.jpg");
+}
+
+section.dining.bg3 {
+  background-image: url("../img/dining3-m29.jpg");
+}
+
+section.dining.bg4 {
+  background-image: url("../img/dining4-atrium.png");
+}
+
+section.dining.bg5 {
+  background-image: url("../img/dining5-gallery7.jpg");
+}
+
+.dining .dining-inner {
+  width: 1420px;
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+}
+
+.dining .dining-card {
+  position: relative;
+  display: block;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  perspective: 500px;
+}
+
+.dining .dining-card .front,
+.dining .dining-card .back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  transition: all 0.5s;
+}
+
+.dining .dining-card:nth-child(1) .front {
+  background: url("../img/dining1-spectrum.jpg") no-repeat center/cover;
+}
+
+.dining .dining-card:nth-child(2) .front {
+  background: url("../img/dining2-mariposa.jpg") no-repeat center/cover;
+}
+
+.dining .dining-card:nth-child(3) .front {
+  background: url("../img/dining3-m29.jpg") no-repeat center/cover;
+}
+
+.dining .dining-card:nth-child(4) .front {
+  background: url("../img/dining4-atrium.png") no-repeat center/cover;
+}
+
+.dining .dining-card:nth-child(5) .front {
+  background: url("../img/dining5-gallery7.jpg") no-repeat center/cover;
+}
+
+.dining .dining-card .back {
+  background-color: #97824b;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: rotateY(180deg);
+}
+
+.dining-card:hover .front {
+  transform: rotateY(180deg);
+}
+
+.dining-card:hover .back {
+  transform: rotateY(360deg);
+}
+
+.dining .dining-card .back p {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+.dining .dining-card .back div {
+  font-size: 1.6rem;
+  color: #ddd;
+}
+
+/* room */
+section.room {
+  display: flex;
+}
+
+.room .room-image-wrap {
+  overflow: hidden;
+  position: sticky;
+  top: 0;
+  width: 60%;
+  height: 100vh;
+}
+
+.room .room-image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: all 0.5s;
+}
+
+.room .room-image.on {
+  opacity: 1;
+}
+
+.room .room-image img {
+  width: 100%;
+  height: 100%;
+  object-position: center;
+  object-fit: cover;
+}
+
+.room .room-image span {
+  position: absolute;
+  z-index: 10;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1.6rem;
+}
+
+.room .room-info-wrap {
+  width: 40%;
+  height: 100%;
+  background-color: #fffcf3;
+}
+
+.room .room-info-item {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.room .room-info {
+  width: 520px;
+}
+
+.room .room-info h2.section-title {
+  font-family: "Cinema";
+  color: #cd2f34;
+}
+
+.room .room-info p {
+  margin-top: 60px;
+  font-weight: 500;
+  font-size: 2rem;
+  color: #555;
+}
+
+.room .room-info a {
+  margin-top: 50px;
+  display: inline-block;
+  padding: 10px 50px;
+  background-color: #97824b;
+  color: #fff;
+  font-weight: 500;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+/* wedding */
+section.wedding {
+  width: 100%;
+  height: 800px;
+  position: relative;
+}
+
+section.wedding video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+section.wedding h2.section-title {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* gallery */
+section.gallery {
+  width: 100%;
+  padding: 12rem 0;
+  background-color: #810000;
+}
+
+.gallery .section-title {
+  text-align: center;
+  color: #fff;
+  margin-bottom: 60px;
+}
+
+.gallery .gallery-swiper {
+  width: 100%;
+  overflow: hidden;
+}
+
+.gallery .gallery-swiper.off,
+.gallery .gallery-grid.off {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  height: 0;
+}
+
+.gallery .gallery-swiper .swiper-wrapper {
+  transition-timing-function: linear;
+}
+
+.gallery .gallery-swiper .gallery-img {
+  width: 300px;
+  height: 350px;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(1) {
+  background: url("../img/gallery1.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(2) {
+  background: url("../img/gallery2.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(3) {
+  background: url("../img/gallery3.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(4) {
+  background: url("../img/gallery4.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(5) {
+  background: url("../img/gallery5.png") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(6) {
+  background: url("../img/gallery6.png") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(7) {
+  background: url("../img/gallery7.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(8) {
+  background: url("../img/gallery8.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(9) {
+  background: url("../img/gallery9.jpg") no-repeat center/cover;
+}
+
+.gallery .gallery-images .gallery-img:nth-child(10) {
+  background: url("../img/gallery10.png") no-repeat center/cover;
+}
+
+/* facilities */
+section.facilities {
+  width: 100%;
+}
+
+.facilities ul li {
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-color: rgba(0, 0, 0, 0.45);
+  background-blend-mode: darken;
+
+  transition: all 1s;
+}
+
+.facilities ul li:nth-child(1) {
+  background-image: url("../img/facilities1.jpeg");
+}
+
+.facilities ul li:nth-child(2) {
+  background-image: url("../img/facilities2.jpg");
+}
+
+.facilities ul li:nth-child(3) {
+  background-image: url("../img/facilities3.png");
+}
+
+.facilities ul li.on {
+  background-color: rgba(0, 0, 0, 0.35);
+  height: 400px;
+}
+
+.facilities ul li h2 {
+  font-family: "Montserrat";
+  font-weight: 500;
+  font-size: 4.4rem;
+  letter-spacing: -0.03em;
+  color: #fff;
+  text-align: center;
+}
+
+.facilities ul li.on h2 {
+  font-size: 6rem;
+  font-weight: 600;
+}
+
+.facilities ul li p {
+  font-weight: 500;
+  font-size: 1.6rem;
+  color: #fff;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.facilities ul li.on p {
+  font-size: 1.8rem;
+}
+
+.facilities ul li a {
+  display: none;
+  width: 200px;
+  line-height: 40px;
+  font-size: 1.4rem;
+  color: #fff;
+  text-align: center;
+  border: 1px solid #fff;
+  margin-top: 50px;
+}
+
+.facilities ul li.on a {
+  display: inline-block;
+}
+
+/* go top */
+.go-top {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7) url("../img/go-top.svg") no-repeat center/cover;
+  position: fixed;
+  z-index: 99;
+  right: 40px;
+  bottom: 40px;
+  cursor: pointer;
+}
+
+footer {
+  background-color: #333;
+  padding: 5rem 0;
+}
+
+footer .footer-inner {
+  width: 520px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  text-align: center;
+}
+
+footer .f-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #ddd;
+}
+
+footer .f-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px 35px;
+  flex-wrap: wrap;
+}
+
+footer .f-info p {
+  color: #ddd;
+  font-size: 1.4rem;
+}
+
+footer .f-info p:first-child {
+  font-weight: 600;
+}
+
+footer .f-info p span {
+  font-weight: 500;
+}
+
+footer .f-sns {
+  display: flex;
+  gap: 10px;
+}
+
+footer .f-sns li a img {
+  width: 30px;
+  height: 30px;
+}
+
+footer .f-link {
+  width: 100vw;
+  padding: 2rem 0;
+  border-top: 1px solid #ddd;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+
+footer .f-link li a {
+  color: #ddd;
+  font-size: 1.4rem;
+}
