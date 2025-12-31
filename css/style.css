@@ -156,6 +156,14 @@ header nav .depth2 > li:last-child::after {
   display: none;
 }
 
+header .close-btn {
+  display: none;
+}
+
+header .nav-bg {
+  display: none;
+}
+
 header .hamburger {
   width: 36px;
   height: 24px;
